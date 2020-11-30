@@ -50,7 +50,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === "production"){
   app.use(express.static("client/build"))
 }
 
