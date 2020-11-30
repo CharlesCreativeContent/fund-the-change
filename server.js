@@ -24,7 +24,7 @@ const configDB = require('./config/database.js');
 
 let db;
 
-mongoose.connect(configDB.url, (err, database) => {
+mongoose.connect(process.env.MONGOBD_URI || configDB.url, (err, database) => {
   if (err) return console.log(err)
   db = database
   require('./app/routes.js')(app, passport, db, ObjectId);
@@ -49,5 +49,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
+if(process.env.NODE_ENV !== 'production'){
+  app.use(express.static("client/build"))
+}
 
 app.listen(PORT, console.log(`server is running on ${PORT}`));
