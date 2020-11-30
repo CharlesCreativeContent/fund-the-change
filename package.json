@@ -12,10 +12,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "engines": {
-    "npm": "5.7.1",
-    "node": "9.5.0"
-  },
   "dependencies": {
     "axois": "0.0.1-security",
     "axios": "^0.21.0",
